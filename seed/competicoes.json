@@ -1,0 +1,101 @@
+{
+  "notas": {
+    "ambito": "Cinco competições configuradas. Todas as restantes ficam sem campos específicos — fluxo normal de verificações, anomalias, informações e ocorrências.",
+    "origem": "Slides de Particularidades da 4.ª Ação de Formação de Delegados.",
+    "momentos": "pre = antes do jogo | jogo = durante (ex.: contagem de adeptos, fornecida ao intervalo) | pos = após o jogo.",
+    "confirmacaoPos": "Itens declarados no pré-jogo (quais são, origem, se vão ocorrer) e confirmados no pós-jogo (se ocorreram e como correram)."
+  },
+
+  "competicoes": [
+    {
+      "id": "liga-3-placard",
+      "nome": "Liga 3 Placard",
+      "desporto": "futebol",
+      "campos": [
+        { "ref": "relvado-nivel-1", "momento": "pre", "herdaDeVerificacao": "relvado" },
+        { "ref": "primeira-linha-publicidade", "momento": "pre", "herdaDeVerificacao": "publicidade-1a-linha",
+          "descricao": "Instalação semanal e manutenção da 1.ª linha de publicidade — verificação" },
+        { "ref": "presenca-diretor-comunicacao", "momento": "pre", "tipo": "presenca" },
+        { "ref": "presenca-gestor-seguranca", "momento": "pre", "tipo": "presenca" },
+        { "ref": "acoes-responsabilidade-social", "momento": "pre", "confirmacaoPos": true,
+          "descricao": "2 ações por volta da fase da competição, mais participação nas atividades da Fundação FPF" },
+        { "ref": "acao-promocao-jogo", "momento": "pre", "confirmacaoPos": true,
+          "descricao": "Uma ação de promoção por volta, envolvendo entidades locais e/ou patrocinadores" },
+        { "ref": "mvp", "momento": "pos", "obrigatorio": true },
+        { "ref": "ranking-puro-futebol", "momento": "pos", "obrigatorio": true,
+          "tipo": "lista-numerica-com-soma", "ambito": "por-equipa" }
+      ]
+    },
+
+    {
+      "id": "liga-bpi",
+      "nome": "Liga BPI",
+      "desporto": "futebol",
+      "campos": [
+        { "ref": "presenca-diretor-comunicacao", "momento": "pre", "tipo": "presenca", "ambito": "por-equipa",
+          "descricao": "Diretor de Comunicação/Marketing com presença em todos os jogos — monitorização" },
+        { "ref": "primeira-linha-publicidade", "momento": "pre", "herdaDeVerificacao": "publicidade-1a-linha" },
+        { "ref": "ruido-visual", "momento": "pre", "herdaDeVerificacao": "ruido-visual",
+          "descricao": "Minimização do ruído visual — presença de inertes junto ao campo" },
+        { "ref": "contagem-adeptos-total", "momento": "jogo", "tipo": "numero" },
+        { "ref": "contagem-adeptos-visitantes", "momento": "jogo", "tipo": "numero" },
+        { "ref": "acao-promocao-jogo", "momento": "pre", "confirmacaoPos": true,
+          "descricao": "Três ações de promoção de jogo, mediante condições obrigatórias" },
+        { "ref": "mvp", "momento": "pos", "obrigatorio": true }
+      ]
+    },
+
+    {
+      "id": "liga-next-gen",
+      "nome": "Liga Next Gen",
+      "desporto": "futebol",
+      "campos": [
+        { "ref": "relvado-nivel-1", "momento": "pre", "herdaDeVerificacao": "relvado" }
+      ]
+    },
+
+    {
+      "id": "liga-placard-futsal",
+      "nome": "Liga Placard (Futsal)",
+      "desporto": "futsal",
+      "campos": [
+        { "ref": "zona-reservada-bilhetes", "momento": "pre", "herdaDeVerificacao": "bancadas",
+          "descricao": "Zona reservada na bancada para bilhetes distribuídos" },
+        { "ref": "speaker", "momento": "pre", "tipo": "sim-nao" },
+        { "ref": "sistema-som", "momento": "pre", "tipo": "sim-nao" },
+        { "ref": "mascote", "momento": "pre", "tipo": "sim-nao" },
+        { "ref": "limpeza-piso", "momento": "pre", "herdaDeVerificacao": "piso",
+          "descricao": "Verificação da limpeza do piso antes do jogo — responsabilidade do clube visitado" },
+        { "ref": "estado-piso-fpf", "momento": "pre", "condicao": { "id": "piso-fpf", "quando": "sim" },
+          "descricao": "Estado do Piso FPF e da Linha LED" },
+        { "ref": "backdrop-flash", "momento": "pre", "condicao": { "id": "flash", "quando": "sim" },
+          "descricao": "Conformidade do backdrop da flash interview — registo em BOJ" },
+        { "ref": "num-espectadores", "momento": "jogo", "tipo": "numero" },
+        { "ref": "acoes-promocionais", "momento": "pre", "confirmacaoPos": true },
+        { "ref": "flash-como-correu", "momento": "pos", "condicao": { "id": "flash", "quando": "sim" } },
+        { "ref": "flash-elementos", "momento": "pos", "tipo": "lista-repetivel",
+          "condicao": { "id": "flash", "quando": "sim" },
+          "descricao": "Elementos que foram à flash interview — nome e função" }
+      ]
+    },
+
+    {
+      "id": "liga-feminina-placard",
+      "nome": "Liga Feminina Placard (Futsal)",
+      "desporto": "futsal",
+      "campos": [
+        { "ref": "presenca-ambulancia", "momento": "pre", "herdaDeVerificacao": "ambulancia",
+          "descricao": "Monitorização da presença de ambulância nos jogos" },
+        { "ref": "limpeza-piso", "momento": "pre", "herdaDeVerificacao": "piso" },
+        { "ref": "estado-piso-fpf", "momento": "pre", "condicao": { "id": "piso-fpf", "quando": "sim" } },
+        { "ref": "num-espectadores", "momento": "jogo", "tipo": "numero" }
+      ]
+    }
+  ],
+
+  "condicoesUsadas": [
+    { "id": "piso-fpf", "nome": "Jogo com Piso FPF e Linha LED", "nota": "Jogos indicados pela FPF — normalmente conhecido à partida." },
+    { "id": "flash", "nome": "Flash interview", "nota": "Nem sempre conhecido antes do jogo; usar estado indeterminado." },
+    { "id": "mvp", "nome": "MVP", "nota": "Obrigatório na Liga 3 Placard e na Liga BPI — nessas competições é campo fixo, não condição." }
+  ]
+}

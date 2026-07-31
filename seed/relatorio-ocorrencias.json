@@ -1,0 +1,345 @@
+{
+  "id": "relatorio-ocorrencias",
+  "nome": "Relatório de Ocorrências",
+  "notas": {
+    "destino": "Plataforma SCORE. A app produz texto por secção, com botão de copiar individual e um para o bloco completo.",
+    "tempo": "Formatos aceites: '11:08', '29 min.', '45+3 min.'. O período (1.ª/2.ª parte, prolongamento) é campo separado. Sem validação rígida de formato.",
+    "referenciaCruzada": "Secções com detalhe extenso escrevem apenas 'Ver \"Outros comentários\"'; o detalhe vai numerado no bloco final.",
+    "competicoes": "O relatório é igual em todas as competições — apenas o nome da competição muda no cabeçalho.",
+    "frasesModelo": "Biblioteca editável na app: adicionar, editar, remover e duplicar. Fragmentos são remates reutilizáveis que se anexam a qualquer frase.",
+    "fluxo": "Registo ao vivo: apenas tipo de reporte, tempo, equipa e texto corrido — sem modelos. Na geração do relatório, cada ocorrência é montada a partir de um modelo do seu tipo, com a nota original visível como referência e os blocos variáveis editáveis individualmente. O modelo proposto pode ser trocado por outro.",
+    "fotos": "As fotos são referenciadas no texto por etiqueta e número (ex.: 'conforme fotografias \"Danos cadeiras\" 1 a 5'). Cada foto precisa de etiqueta e numeração, e a app insere a referência no texto com um toque."
+  },
+  "cabecalho": [
+    {
+      "id": "jogo",
+      "etiqueta": "Jogo",
+      "tipo": "texto",
+      "origem": "equipas do jogo"
+    },
+    {
+      "id": "numero-jogo",
+      "etiqueta": "N.º do Jogo",
+      "tipo": "texto"
+    },
+    {
+      "id": "hora-jogo",
+      "etiqueta": "Hora do Jogo",
+      "tipo": "texto"
+    },
+    {
+      "id": "estadio",
+      "etiqueta": "Estádio/Pavilhão",
+      "tipo": "texto"
+    },
+    {
+      "id": "data-jogo",
+      "etiqueta": "Data do jogo",
+      "tipo": "texto"
+    },
+    {
+      "id": "delegados",
+      "etiqueta": "Delegados",
+      "tipo": "texto",
+      "descricao": "Pode haver mais do que um"
+    },
+    {
+      "id": "resultado",
+      "etiqueta": "Resultado",
+      "tipo": "texto",
+      "momento": "pos"
+    }
+  ],
+  "seguranca": [
+    {
+      "id": "forca-policial",
+      "etiqueta": "PSP / GNR",
+      "tipo": "selecao",
+      "opcoes": [
+        "PSP",
+        "GNR"
+      ]
+    },
+    {
+      "id": "num-agentes",
+      "etiqueta": "N.º de agentes",
+      "tipo": "numero"
+    },
+    {
+      "id": "num-ard",
+      "etiqueta": "N.º de ARD",
+      "tipo": "numero"
+    }
+  ],
+  "seccoes": [
+    {
+      "id": "organizacao-seguranca",
+      "titulo": "Organização da Segurança",
+      "escala": "qualitativa",
+      "porEquipa": true
+    },
+    {
+      "id": "incidentes-publico",
+      "titulo": "Segurança — Incidentes do Público",
+      "escala": "sim-nao",
+      "porEquipa": true
+    },
+    {
+      "id": "pirotecnico",
+      "titulo": "Uso de material pirotécnico / apontadores / laser / cartazes / tarjas",
+      "escala": "sim-nao",
+      "porEquipa": true
+    },
+    {
+      "id": "discriminatorio",
+      "titulo": "Comportamento discriminatório (público ou equipas)",
+      "escala": "sim-nao",
+      "porEquipa": true
+    },
+    {
+      "id": "banco-suplentes",
+      "titulo": "Comportamento das equipas no banco dos suplentes",
+      "escala": "qualitativa",
+      "porEquipa": true
+    },
+    {
+      "id": "dirigentes",
+      "titulo": "Comportamento das equipas (dirigentes)",
+      "escala": "qualitativa",
+      "porEquipa": true
+    }
+  ],
+  "escalas": {
+    "qualitativa": [
+      "Excelente",
+      "Bom",
+      "Satisfatório",
+      "Insatisfatório"
+    ],
+    "sim-nao": [
+      "Sim",
+      "Não"
+    ]
+  },
+  "regras": [
+    "Cada ocorrência registada durante o jogo é classificada com uma secção e uma equipa (visitada ou visitante).",
+    "Uma secção com ocorrências classificadas fica automaticamente a 'Sim' (ou pede avaliação, se for escala qualitativa) e o seu texto passa a 'Ver \"Outros comentários\"'.",
+    "Uma secção sem ocorrências fica a 'Não' e com caixa de texto vazia.",
+    "As ocorrências são numeradas sequencialmente no bloco 'Outros comentários', por ordem cronológica.",
+    "O fecho padrão é acrescentado automaticamente no fim do bloco."
+  ],
+  "fechoPadrao": "Nada mais digno de registo foi presenciado pelo Delegado da FPF, nem ao mesmo foi comunicada qualquer ocorrência, quer por parte dos Delegados ao Jogo de ambos os clubes ou por qualquer outro agente inerente à organização de jogo.\n----- FIM -----",
+  "frasesModelo": [
+    {
+      "id": "canticos",
+      "seccao": "discriminatorio",
+      "etiqueta": "Cânticos / expressões de adeptos",
+      "texto": "Adeptos afetos à equipa do {{equipa}}, identificados quer pelos adereços alusivos à referida equipa (camisolas e cachecóis), quer pelos cânticos de apoio à mesma, e presentes {{localizacao}}, exclusiva aos mesmos, gritaram repetidamente em uníssono e audível em todo o recinto desportivo, as expressões:\n{{lista_expressoes}}",
+      "subFrase": "- Aos {{tempo}} da {{parte}}: \"{{expressao}}\";"
+    },
+    {
+      "id": "speaker",
+      "seccao": "discriminatorio",
+      "etiqueta": "Expressões proferidas pelo speaker",
+      "texto": "O speaker do {{recinto}}, utilizando a aparelhagem sonora do mesmo e com o jogo a decorrer, proferiu as seguintes expressões:\n{{lista_expressoes}}",
+      "subFrase": "- Aos {{tempo}} da {{parte}} \"{{expressao}}\""
+    },
+    {
+      "id": "arremesso-objeto",
+      "seccao": "incidentes-publico",
+      "etiqueta": "Arremesso de objeto para a superfície de jogo",
+      "texto": "Aos {{tempo}} da {{parte}}, com o jogo {{estado_jogo}}, adeptos afetos à equipa do {{equipa}}, identificados quer pelos adereços alusivos à referida equipa (camisolas e cachecóis), quer pelos cânticos de apoio à mesma, e presentes {{localizacao}}, exclusiva aos mesmos, arremessaram {{objeto}} para a superfície de jogo, tendo o referido objeto caído {{local_queda}}. O objeto não atingiu qualquer interveniente, não tendo sido igualmente possível identificar o autor do arremesso."
+    },
+    {
+      "id": "arremesso-pos-jogo",
+      "seccao": "incidentes-publico",
+      "etiqueta": "Arremesso após o final do jogo",
+      "texto": "Após o final do jogo, e quando {{alvo}} se dirigia para os balneários, foi arremessada na sua direção {{objeto}}, sem que tivesse atingido qualquer elemento."
+    },
+    {
+      "id": "cartolinas",
+      "seccao": "incidentes-publico",
+      "etiqueta": "Arremesso de cartolinas para o banco de suplentes",
+      "texto": "Desde o início do encontro foram arremessadas várias cartolinas por adeptos da equipa do {{equipa}}, identificados quer pelos adereços alusivos à referida equipa (camisolas e cachecóis), quer pelos cânticos de apoio à mesma, e presentes {{localizacao}}, exclusiva aos mesmos:\n{{lista_episodios}}",
+      "subFrase": "- Aos {{tempo}} da {{parte}}, em direção {{direcao}}, {{consequencia}};"
+    },
+    {
+      "id": "retardamento",
+      "seccao": "incidentes-publico",
+      "etiqueta": "Retardamento do jogo por decisão do árbitro",
+      "texto": "Ao minuto {{tempo}} da {{parte}}, por decisão do árbitro da partida, o recomeço do jogo foi retardado em {{duracao}}, em virtude de {{motivo}}. Registe-se que logo aos {{tempo_alerta}} da {{parte}}, o {{quem_alertou}} alertou o Delegado da FPF para esta situação, tendo este alertado o Gestor de Segurança do {{clube}} e as forças de segurança presentes no local no sentido de cessar os referidos arremessos."
+    },
+    {
+      "id": "rede-protecao",
+      "seccao": "incidentes-publico",
+      "etiqueta": "Interrupção do jogo por motivos de segurança",
+      "texto": "Aos {{tempo}} da {{parte}}, adeptos afetos à equipa do {{equipa}}, identificados quer pelos adereços alusivos à referida equipa (camisolas e cachecóis), quer pelos cânticos de apoio à mesma, e presentes {{localizacao}}, exclusiva aos mesmos, {{acao}}. Esta ação levou à interrupção do jogo por parte da equipa de arbitragem por motivos de segurança. A situação foi regularizada e o jogo retomou após {{duracao_interrupcao}} de interrupção, quando {{condicao_retoma}}."
+    },
+    {
+      "id": "pirotecnia",
+      "seccao": "pirotecnico",
+      "etiqueta": "Material pirotécnico / flash lights / petardos",
+      "texto": "Na {{localizacao}}, ocupada exclusivamente por adeptos afetos à equipa {{equipa}}, identificados com adereços alusivos ao clube, mormente cachecóis, camisolas, tarjas e bandeiras, registaram-se as seguintes ocorrências:\n{{lista_episodios}}\nRegiste-se que os episódios referidos não causaram qualquer impacto no normal desenrolar do jogo.",
+      "subFrase": "- {{tempo_ou_momento}}, {{descricao_episodio}};"
+    },
+    {
+      "id": "bandeiras-tarjas",
+      "seccao": "pirotecnico",
+      "etiqueta": "Bandeiras, tarjas e tambores com aval das forças de segurança",
+      "texto": "Na {{localizacao}}, ocupada em exclusivo por adeptos afetos à equipa do {{equipa}}, identificados, quer pelos adereços alusivos à referida equipa (camisolas e cachecóis), quer pelos cânticos de apoio à mesma, utilizaram {{material}}. Foi também exibida uma tarja com as menções \"{{mencao}}\". Registe-se que a utilização do material atrás mencionado teve o aval das forças de segurança, conforme comunicado aos Delegados da FPF, pelo Comandante das Forças Policiais, {{comandante}}."
+    },
+    {
+      "id": "tarja-imagem",
+      "seccao": "discriminatorio",
+      "etiqueta": "Tarja com imagem ou caricatura",
+      "texto": "No {{momento}}, na {{localizacao}}, ocupada exclusivamente por adeptos afetos à equipa {{equipa}}, foi exibida uma tarja com dimensões superiores a 1m x 1m, a qual continha {{conteudo}}."
+    },
+    {
+      "id": "atraso-entrada",
+      "seccao": "incidentes-publico",
+      "etiqueta": "Atraso na entrada em campo (uma equipa)",
+      "texto": "A equipa {{equipa}} registou um atraso de {{minutos}} minutos na entrada em campo para o início da {{parte}}, relativamente à hora prevista para o reinício, não tendo sido comunicada ao Delegado da FPF qualquer justificação para o sucedido."
+    },
+    {
+      "id": "atraso-reinicio-ambas",
+      "seccao": "incidentes-publico",
+      "etiqueta": "Atraso no reinício (ambas as equipas)",
+      "texto": "O reinício da {{parte}} registou-se com um atraso de {{minutos}} minutos relativamente à hora aprazada, em virtude do atraso registado pela equipa do {{equipa_a}}. Registe-se igualmente que a equipa do {{equipa_b}} também registou um atraso de {{minutos_b}} minutos, em relação ao horário estabelecido para o reinício do jogo. Em ambas as situações não foi apresentada qualquer justificação para os mencionados atrasos."
+    },
+    {
+      "id": "acesso-balneario",
+      "seccao": "organizacao-seguranca",
+      "etiqueta": "Incidente no acesso / chegada da comitiva",
+      "texto": "Aquando da chegada da equipa do {{equipa}} ao {{recinto}}, verificou-se que {{descricao}}. Perante esta situação, {{intervencao}}. As orientações foram prontamente acatadas, tendo a passagem sido restabelecida sem qualquer incidente adicional. Registe-se que desta situação foi dada informação ao Gestor de Segurança e forças policiais."
+    },
+    {
+      "id": "debriefing",
+      "seccao": "incidentes-publico",
+      "etiqueta": "Comunicação em debriefing final",
+      "texto": "No debriefing final, o Gestor de Segurança da equipa {{equipa}}, Sr. {{nome}}, comunicou aos presentes que {{descricao}}. Registe-se que os referidos atos não foram presenciados pelos Delegados da FPF."
+    },
+    {
+      "id": "iluminacao-avaria",
+      "seccao": "organizacao-seguranca",
+      "etiqueta": "Avaria de infraestrutura com atraso",
+      "texto": "{{infraestrutura}} esteve inoperacional devido a {{causa}} até cerca de {{tempo_resolucao}} antes da hora prevista para o início do jogo, momento em que a situação foi resolvida.\nEsta ocorrência provocou o atraso no início do jogo, tendo sido decidido, em comum acordo entre a equipa de arbitragem e os clubes intervenientes, reagendar o início do jogo das {{hora_prevista}} para as {{hora_nova}}."
+    },
+    {
+      "id": "condicoes-terreno",
+      "seccao": "organizacao-seguranca",
+      "etiqueta": "Atraso por condições do terreno",
+      "texto": "Após o período de aquecimento das equipas, o árbitro da partida considerou que, em consequência de {{causa}}, {{descricao_problema}}, não reunindo, na sua opinião, as condições ideais para o início do encontro.\nPerante esta situação, foi realizada a respetiva intervenção de manutenção no terreno de jogo para {{intervencao}}, após a qual o árbitro considerou reunidas as condições para o início do jogo. Em virtude da situação descrita o jogo teve início com um atraso de {{minutos}} minutos."
+    },
+    {
+      "id": "atraso-balneario",
+      "seccao": "incidentes-publico",
+      "etiqueta": "Atraso por retardamento da saída do balneário",
+      "texto": "O jogo iniciou com {{minutos}} minutos de atraso, em virtude da equipa {{equipa}} ter retardado a saída do seu balneário para o início de jogo, não tendo sido transmitida qualquer justificação."
+    },
+    {
+      "id": "atraso-nao-imputavel",
+      "seccao": "incidentes-publico",
+      "etiqueta": "Atraso não imputável (jogos simultâneos)",
+      "texto": "Ao abrigo do disposto no {{referencia_regulamentar}}, onde ficou determinado o dever dos jogos que envolvam clubes a disputar o mesmo objetivo se iniciarem no mesmo horário, tornou-se necessário fazer coincidir o início de cada um dos jogos. Por esse facto, a partida iniciou com {{minutos}} minutos de atraso na {{parte}}, não imputável a qualquer uma das equipas, que aguardaram no túnel de acesso ao relvado a indicação do Delegado da FPF para aceder ao mesmo, sempre devidamente informadas do motivo subjacente a essa espera."
+    },
+    {
+      "id": "danos-recinto",
+      "seccao": "organizacao-seguranca",
+      "etiqueta": "Danos no recinto com acordo entre clubes",
+      "texto": "{{descricao_danos}} ({{referencia_fotos}}). Após o final do jogo, em reunião final de balanço, realizada na presença de {{presentes}}, os delegados das duas equipas, Srs. {{delegados}}, informaram os presentes de que haviam chegado a acordo quanto à resolução dos referidos danos."
+    },
+    {
+      "id": "danos-autocarro",
+      "seccao": "organizacao-seguranca",
+      "etiqueta": "Danos provocados por autocarro",
+      "texto": "O autocarro de transporte da equipa {{equipa}}, ao efetuar uma manobra, embateu {{local_embate}}, provocando danos {{descricao_danos}} ({{referencia_fotos}}). Na mesma reunião de balanço, os delegados das duas equipas informaram igualmente que tinham acordado entre si a resolução destes danos."
+    },
+    {
+      "id": "bilhetica",
+      "seccao": "organizacao-seguranca",
+      "etiqueta": "Constrangimentos na bilhética",
+      "texto": "Foi transmitido pelo {{quem_reportou}} que, já após o início do jogo, permaneciam no exterior do recinto vários adeptos da sua equipa, tendo sido referida a existência de {{descricao_fila}}, situação atribuída a {{causa}}. Em resposta, o Gestor de Segurança da equipa visitada, Sr. {{nome_gestor}}, informou que {{resposta}}."
+    },
+    {
+      "id": "chegada-comitiva",
+      "seccao": "organizacao-seguranca",
+      "etiqueta": "Incidente na chegada ou acesso da comitiva",
+      "texto": "No momento da {{momento}} dos elementos da equipa {{equipa}} no recinto desportivo, {{descricao}}. {{consequencia}}"
+    },
+    {
+      "id": "pirotecnia-detalhada",
+      "seccao": "pirotecnico",
+      "etiqueta": "Pirotecnia com contagem por minuto",
+      "texto": "Na {{localizacao}}, ocupada em exclusivo por adeptos afetos à equipa {{equipa}}, identificados quer pelos adereços utilizados alusivos à referida equipa, mormente cachecóis e camisolas, quer pelos cânticos de apoio à mesma, foram deflagrados:\n{{lista_episodios}}",
+      "subFrase": "- {{quantidade}} {{material}} aos {{tempo}} de jogo, deflagrado na respetiva bancada, não causando qualquer dano, nem impacto no decorrer do jogo;"
+    },
+    {
+      "id": "tarjas-nao-autorizadas",
+      "seccao": "pirotecnico",
+      "etiqueta": "Tarjas não autorizadas",
+      "texto": "Na {{localizacao}}, ocupada em exclusivo por adeptos afetos à equipa {{equipa}}, identificados pelos adereços utilizados alusivos à referida equipa, foram exibidas {{quantidade}} tarjas de dimensões superiores a 1m x 1m ({{referencia_fotos}}) com as frases \"{{frases}}\", tarjas essas que não foram autorizadas pela força policial para exibição naquele local."
+    },
+    {
+      "id": "flash-comparencia",
+      "seccao": "incidentes-publico",
+      "etiqueta": "Comparência na flash interview",
+      "texto": "Tendo decorrido flash-interview em direto após o final do jogo pelo operador televisivo, da parte da equipa {{equipa}} {{comparencia}}."
+    },
+    {
+      "id": "conduta-agente",
+      "seccao": "banco-suplentes",
+      "etiqueta": "Conduta de agente desportivo no banco",
+      "texto": "O agente desportivo {{nome}}, estando inscrito na ficha de jogo como {{funcao}} da equipa {{equipa}}, esteve durante todo o jogo, de forma permanente, {{conduta}}."
+    },
+    {
+      "id": "registo-positivo",
+      "seccao": "organizacao-seguranca",
+      "etiqueta": "Registo positivo",
+      "texto": "Após o final do jogo, {{descricao_positiva}}."
+    },
+    {
+      "id": "interrupcao-condicoes",
+      "seccao": "incidentes-publico",
+      "etiqueta": "Interrupção por falta de condições de segurança",
+      "texto": "A equipa de arbitragem interrompeu o jogo aos {{tempo}} considerando que naquele momento não estavam reunidas as condições de segurança necessárias para o decorrer do mesmo, devido ao comportamento de um grupo de adeptos afetos à equipa {{equipa}}, situados {{localizacao}}, destinada exclusivamente aos mesmos. {{descricao_detalhada}} Após {{resolucao}}, a equipa de arbitragem considerou que estavam reunidas as condições para retomar a partida, o que veio a ocorrer {{duracao}} após a interrupção."
+    },
+    {
+      "id": "adepto-retirado",
+      "seccao": "incidentes-publico",
+      "etiqueta": "Adepto identificado e retirado do recinto",
+      "texto": "{{momento}}, um adepto afeto à equipa {{equipa}}, identificado pelos adereços que envergava, {{conduta}}. O adepto em causa foi identificado pelas forças de segurança presentes e retirado do recinto desportivo. Posteriormente, fui informado pelo comandante da força policial de que {{informacao_adicional}}."
+    },
+    {
+      "id": "rede-golo",
+      "seccao": "incidentes-publico",
+      "etiqueta": "Danos na rede de proteção após golo",
+      "texto": "Aos {{tempo}} de jogo, aquando da obtenção de um golo por parte da equipa {{equipa}}, os adeptos afetos a esta equipa, localizados em setor destinado exclusivamente aos mesmos e identificados pelos adereços e cânticos de apoio, {{acao}}, provocando {{consequencia}}.\nEsta situação originou constrangimentos ao nível da segurança, tendo sido reforçada a vigilância daquela zona com a presença de {{reforco}}."
+    }
+  ],
+  "fragmentos": [
+    {
+      "id": "aval-forcas",
+      "texto": "Registe-se que a utilização do material atrás mencionado teve o aval das forças de segurança, conforme comunicado aos Delegados da FPF, pelo Comandante das Forças Policiais, {{comandante}}."
+    },
+    {
+      "id": "nao-presenciado",
+      "texto": "Registe-se que os referidos atos não foram presenciados pelos Delegados da FPF."
+    },
+    {
+      "id": "sem-atingir",
+      "texto": "sem atingir qualquer elemento"
+    },
+    {
+      "id": "sem-impacto",
+      "texto": "Registe-se que os episódios referidos não causaram qualquer impacto no normal desenrolar do jogo."
+    },
+    {
+      "id": "sem-justificacao",
+      "texto": "não tendo sido apresentada qualquer justificação para o sucedido."
+    },
+    {
+      "id": "identificacao-adeptos",
+      "texto": "identificados quer pelos adereços alusivos à referida equipa (camisolas e cachecóis), quer pelos cânticos de apoio à mesma"
+    }
+  ]
+}

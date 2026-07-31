@@ -1,0 +1,414 @@
+{
+  "id": "boletim-organizacao-jogo",
+  "nome": "Boletim de Organização de Jogo (BOJ)",
+  "notas": {
+    "destino": "Plataforma SCORE. A app produz texto por secção, com botão de copiar individual.",
+    "composicaoAutomatica": "O bloco 'Outros comentários' é um recapitulativo de estrutura fixa. Quase todos os blocos são preenchidos a partir de dados já recolhidos no guião da reunião e no pré-jogo — só o debriefing e os desvios são escritos de novo.",
+    "origemDados": "Condições do relvado/piso e do estádio/pavilhão são alimentadas pelas verificações, pontos a validar e registos do boletim (anomalias e informações).",
+    "camposObrigatoriosCompeticao": "Cada competição pode acrescentar campos obrigatórios próprios (Liga 3, Liga BPI, etc.), definidos na biblioteca de campos.",
+    "equipaVisitada": "Preparação do jogo e Organização da imprensa são avaliadas apenas para a equipa visitada.",
+    "competicoes": "O boletim é igual em todas as competições. O que varia são os itens do bloco 'Informações adicionais', que entram conforme a competição (MVP e Ranking Puro Futebol na Liga 3, ambulância na Liga Feminina Placard, etc.), definidos na biblioteca de campos."
+  },
+  "cabecalho": [
+    {
+      "id": "jogo",
+      "etiqueta": "Jogo",
+      "tipo": "texto"
+    },
+    {
+      "id": "numero-jogo",
+      "etiqueta": "N.º do Jogo",
+      "tipo": "texto"
+    },
+    {
+      "id": "hora-jogo",
+      "etiqueta": "Hora do Jogo",
+      "tipo": "texto"
+    },
+    {
+      "id": "estadio",
+      "etiqueta": "Estádio/Pavilhão",
+      "tipo": "texto"
+    },
+    {
+      "id": "data-jogo",
+      "etiqueta": "Data do jogo",
+      "tipo": "texto"
+    },
+    {
+      "id": "delegados",
+      "etiqueta": "Delegados",
+      "tipo": "texto"
+    },
+    {
+      "id": "resultado",
+      "etiqueta": "Resultado",
+      "tipo": "texto",
+      "momento": "pos"
+    }
+  ],
+  "seccoes": [
+    {
+      "id": "informacoes-gerais",
+      "titulo": "Informações Gerais",
+      "campos": [
+        {
+          "id": "total-espectadores",
+          "etiqueta": "Total de Espectadores",
+          "tipo": "numero",
+          "momento": "jogo"
+        },
+        {
+          "id": "espectadores-visitantes",
+          "etiqueta": "Total de Espectadores Visitantes",
+          "tipo": "numero",
+          "momento": "jogo"
+        },
+        {
+          "id": "receita-bruta",
+          "etiqueta": "Receita Bruta",
+          "tipo": "texto",
+          "momento": "pos",
+          "obrigatorio": false
+        },
+        {
+          "id": "lotacao-esgotada",
+          "etiqueta": "Lotação Esgotada",
+          "tipo": "sim-nao"
+        },
+        {
+          "id": "jogo-televisionado",
+          "etiqueta": "Jogo Televisionado",
+          "tipo": "sim-nao"
+        },
+        {
+          "id": "ecra-gigante",
+          "etiqueta": "Ecrã Gigante — utilização correta",
+          "tipo": "sim-nao-naoutilizado"
+        },
+        {
+          "id": "internet-sala-delegado",
+          "etiqueta": "Ligação à Internet na Sala de Delegado",
+          "tipo": "sim-nao-naoutilizado"
+        }
+      ]
+    },
+    {
+      "id": "condicoes-relvado",
+      "titulo": "Condições do Relvado/Piso",
+      "escala": "qualitativa",
+      "texto": true,
+      "alimentadoPor": [
+        "verificacoes:relvado",
+        "pontosValidar",
+        "registosBoletim"
+      ]
+    },
+    {
+      "id": "condicoes-estadio",
+      "titulo": "Condições do Estádio/Pavilhão",
+      "escala": "qualitativa",
+      "texto": true,
+      "alimentadoPor": [
+        "verificacoes:instalacoes",
+        "pontosValidar",
+        "registosBoletim"
+      ]
+    },
+    {
+      "id": "apoio-medico",
+      "titulo": "Apoio Médico",
+      "campos": [
+        {
+          "id": "entidade-medica",
+          "etiqueta": "Entidade",
+          "tipo": "selecao",
+          "opcoes": [
+            "Bombeiros",
+            "Cruz Vermelha",
+            "Outros"
+          ]
+        },
+        {
+          "id": "num-elementos-medicos",
+          "etiqueta": "N.º de Elementos",
+          "tipo": "numero"
+        },
+        {
+          "id": "requisitos-medicos",
+          "etiqueta": "Requisitos Médicos Mínimos (ambulância medicalizada e apoio médico)",
+          "tipo": "sim-nao"
+        }
+      ]
+    },
+    {
+      "id": "organizacao",
+      "titulo": "Organização",
+      "subseccoes": [
+        {
+          "id": "preparacao-jogo",
+          "titulo": "Preparação do jogo — Equipa Visitada",
+          "escala": "qualitativa",
+          "texto": true
+        },
+        {
+          "id": "organizacao-imprensa",
+          "titulo": "Organização da imprensa — Equipa Visitada",
+          "escala": "qualitativa",
+          "texto": true
+        }
+      ]
+    },
+    {
+      "id": "organizacao-comercial",
+      "titulo": "Organização Comercial",
+      "subseccoes": [
+        {
+          "id": "marcas-concorrentes",
+          "titulo": "Presença de marcas concorrentes com as marcas dos patrocinadores",
+          "campos": [
+            {
+              "id": "marcas-tunel",
+              "etiqueta": "Túnel",
+              "tipo": "sim-nao"
+            },
+            {
+              "id": "marcas-bancos",
+              "etiqueta": "Bancos de suplentes",
+              "tipo": "sim-nao"
+            },
+            {
+              "id": "marcas-1a-linha",
+              "etiqueta": "1.ª linha ou muro de bancadas",
+              "tipo": "sim-nao"
+            },
+            {
+              "id": "marcas-2a-linha",
+              "etiqueta": "2.ª linha ou muro de bancadas",
+              "tipo": "sim-nao"
+            }
+          ],
+          "observacoes": true
+        },
+        {
+          "id": "publicidade-competicoes",
+          "titulo": "Publicidade das competições",
+          "campos": [
+            {
+              "id": "pub-1a-linha",
+              "etiqueta": "1.ª Linha",
+              "tipo": "sim-nao"
+            },
+            {
+              "id": "pub-flash",
+              "etiqueta": "Flash",
+              "tipo": "sim-nao"
+            },
+            {
+              "id": "pub-conferencia",
+              "etiqueta": "Conferência de Imprensa",
+              "tipo": "sim-nao"
+            },
+            {
+              "id": "pub-zona-mista",
+              "etiqueta": "Zona mista",
+              "tipo": "sim-nao"
+            }
+          ],
+          "observacoes": true
+        }
+      ]
+    },
+    {
+      "id": "organizacao-seguranca",
+      "titulo": "Organização de Segurança",
+      "campos": [
+        {
+          "id": "clube-tem-gestor",
+          "etiqueta": "Clube tem Gestor de Segurança",
+          "tipo": "sim-nao"
+        },
+        {
+          "id": "nome-gestor",
+          "etiqueta": "Nome",
+          "tipo": "texto",
+          "herdaDe": "guiao:gestor-seguranca.pessoa"
+        },
+        {
+          "id": "gestor-presente",
+          "etiqueta": "Esteve presente no jogo?",
+          "tipo": "sim-nao"
+        }
+      ]
+    }
+  ],
+  "escalas": {
+    "qualitativa": [
+      "Excelente",
+      "Bom",
+      "Satisfatório",
+      "Insatisfatório"
+    ],
+    "sim-nao": [
+      "Sim",
+      "Não"
+    ],
+    "sim-nao-naoutilizado": [
+      "Sim",
+      "Não",
+      "Não utilizado"
+    ]
+  },
+  "outrosComentarios": {
+    "descricao": "Recapitulativo de estrutura fixa. Cada bloco é gerado a partir de dados já recolhidos; blocos sem conteúdo são omitidos.",
+    "blocos": [
+      {
+        "id": "diretores-indicados",
+        "origem": "guiao",
+        "modelo": "A equipa visitada indicou o Sr. {{diretor_campo}} como diretor de campo e o Sr. {{diretor_comunicacao}} como diretor de comunicação;"
+      },
+      {
+        "id": "vistoria",
+        "origem": "manual",
+        "modelo": "{{descricao_vistoria}}"
+      },
+      {
+        "id": "apanha-bolas",
+        "origem": "guiao:apanha-bolas",
+        "modelo": "N.º de apanha-bolas: {{numero}}{{observacao}};"
+      },
+      {
+        "id": "rega",
+        "origem": "guiao:rega",
+        "modelo": "Rega: {{descricao}};"
+      },
+      {
+        "id": "ativacoes",
+        "origem": "campos:acoes",
+        "modelo": "Ativações autorizadas do clube visitado: {{desfecho}};"
+      },
+      {
+        "id": "presencas-comunicacao",
+        "origem": "campos:pos-jogo",
+        "modelo": "Estiveram presentes nas seguintes atividades:\n{{lista_atividades}}",
+        "subFrase": "- {{atividade}}:\nVisitado: {{presentes_visitado}}\nVisitante: {{presentes_visitante}}"
+      },
+      {
+        "id": "zona-mista",
+        "origem": "manual",
+        "modelo": "- Zona mista: {{descricao}};"
+      },
+      {
+        "id": "debriefing",
+        "origem": "manual",
+        "modelo": "Debriefing: foi efetuado com a presença de {{presentes}}. {{conteudo}}"
+      }
+    ],
+    "estrutura": [
+      {
+        "parte": "informacoes-adicionais",
+        "descricao": "Bloco numerado de estrutura estável, marcado por '----- INFORMAÇÕES ADICIONAIS -----'."
+      }
+    ],
+    "informacoesAdicionais": [
+      {
+        "id": "elementos-organizacao",
+        "titulo": "Elementos de organização de jogo",
+        "origem": "guiao",
+        "ambito": "por-equipa",
+        "modelo": "- {{equipa}}:\n{{lista_elementos}}",
+        "subFrase": "   - {{funcao}} - {{nome}}{{presente}}",
+        "funcoes": [
+          "Diretor de Campo",
+          "Diretor de Comunicação",
+          "Delegado",
+          "Gestor de Segurança"
+        ]
+      },
+      {
+        "id": "transmissao",
+        "titulo": "Transmissão",
+        "origem": "campos:transmissao",
+        "condicao": {
+          "id": "transmissao",
+          "quando": "sim"
+        },
+        "modelo": "- O jogo teve transmissão em direto no {{canal}};"
+      },
+      {
+        "id": "mvp",
+        "titulo": "MVP",
+        "origem": "campos:pos-jogo",
+        "condicao": {
+          "id": "mvp",
+          "quando": "sim"
+        },
+        "campos": [
+          {
+            "id": "mvp-jogador",
+            "etiqueta": "Nome do jogador",
+            "tipo": "texto"
+          },
+          {
+            "id": "mvp-numero",
+            "etiqueta": "N.º",
+            "tipo": "numero"
+          },
+          {
+            "id": "mvp-equipa",
+            "etiqueta": "Equipa",
+            "tipo": "selecao",
+            "opcoes": [
+              "Visitada",
+              "Visitante"
+            ]
+          },
+          {
+            "id": "mvp-entregue-a",
+            "etiqueta": "Nome da pessoa a quem entreguei o prémio",
+            "tipo": "texto"
+          },
+          {
+            "id": "mvp-sms",
+            "etiqueta": "Minuto de receção do SMS",
+            "tipo": "texto"
+          },
+          {
+            "id": "mvp-cerimonia",
+            "etiqueta": "A cerimónia decorreu conforme o estabelecido",
+            "tipo": "sim-nao"
+          }
+        ]
+      },
+      {
+        "id": "ranking-puro-futebol",
+        "titulo": "Ranking Puro Futebol",
+        "origem": "campos:pos-jogo",
+        "competicao": "liga-3",
+        "descricao": "Parcelas por equipa, com soma calculada pela app.",
+        "modelo": "- {{equipa}}: {{parcelas}} = {{total}}",
+        "ambito": "por-equipa",
+        "tipo": "lista-numerica-com-soma"
+      },
+      {
+        "id": "forca-policial-ards",
+        "titulo": "Força Policial e ARDs",
+        "origem": "guiao",
+        "modelo": "- Estiveram presentes {{num_efetivos}} efetivos da {{forca}} e {{num_ards}} ARDs;"
+      },
+      {
+        "id": "emergencia-medica",
+        "titulo": "Equipa de Emergência Médica",
+        "origem": "guiao",
+        "modelo": "- A equipa médica foi constituída por {{num_elementos}} elementos {{entidade}} e respetiva ambulância. {{presenca_reuniao}};"
+      },
+      {
+        "id": "debriefing",
+        "titulo": "Debriefing",
+        "origem": "manual",
+        "modelo": "- Foi realizada a reunião final com a presença de {{presentes}} onde foram referidos os temas:\n{{lista_temas}}",
+        "subFrase": "   - {{tema}};"
+      }
+    ]
+  }
+}

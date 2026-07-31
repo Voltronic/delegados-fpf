@@ -1,0 +1,664 @@
+{
+  "id": "guiao-futsal",
+  "nome": "Reunião Preparatória — Futsal",
+  "desporto": "futsal",
+  "notas": {
+    "condicoes": "condicao = { id, quando: \"sim\" | \"nao\" }",
+    "ordemAlternativa": "Sem policiamento, o slide da força policial não existe e o Gestor de Segurança ocupa a posição 2, recebendo as perguntas que migram.",
+    "estadosDoValor": "preenchido | pendente | a-definir-na-reuniao | nao-aplicavel"
+  },
+  "condicoes": [
+    {
+      "id": "transmissao",
+      "nome": "Jogo com transmissão televisiva"
+    },
+    {
+      "id": "flash",
+      "nome": "Flash interview"
+    },
+    {
+      "id": "diretor-imprensa",
+      "nome": "Existe Diretor de Imprensa"
+    },
+    {
+      "id": "policiamento",
+      "nome": "Policiamento obrigatório"
+    },
+    {
+      "id": "emergencia-externa",
+      "nome": "Emergência médica por entidade externa (não pelas equipas)"
+    },
+    {
+      "id": "identificacao",
+      "nome": "Momento de identificação"
+    },
+    {
+      "id": "formacao-tunel",
+      "nome": "Formação no túnel"
+    },
+    {
+      "id": "minuto-silencio",
+      "nome": "Minuto de silêncio ou outra ativação"
+    },
+    {
+      "id": "presenca-relevante",
+      "nome": "Presença relevante a referir (coordenador, avaliador, presidente)"
+    }
+  ],
+  "slides": [
+    {
+      "id": "dados-jogo",
+      "ordem": 1,
+      "tema": "Dados do jogo",
+      "tipo": "apenas-dados",
+      "bullets": [],
+      "campos": [
+        {
+          "id": "codigo",
+          "etiqueta": "Código",
+          "tipo": "texto"
+        },
+        {
+          "id": "data-hora",
+          "etiqueta": "Data/Hora",
+          "tipo": "texto",
+          "obrigatorio": true
+        },
+        {
+          "id": "local",
+          "etiqueta": "Local",
+          "tipo": "texto",
+          "obrigatorio": true
+        },
+        {
+          "id": "assistencia",
+          "etiqueta": "Assistência",
+          "tipo": "numero",
+          "momento": "jogo"
+        },
+        {
+          "id": "transmissao",
+          "etiqueta": "Transmissão",
+          "tipo": "sim-nao",
+          "obrigatorio": true
+        },
+        {
+          "id": "transmissao-tipo",
+          "etiqueta": "Tipo de transmissão",
+          "tipo": "texto",
+          "condicao": {
+            "id": "transmissao",
+            "quando": "sim"
+          }
+        },
+        {
+          "id": "internet",
+          "etiqueta": "Internet",
+          "tipo": "sim-nao"
+        },
+        {
+          "id": "marcador-eletrico",
+          "etiqueta": "Marcador elétrico",
+          "tipo": "sim-nao"
+        },
+        {
+          "id": "lotacao-esgotada",
+          "etiqueta": "Lotação esgotada",
+          "tipo": "sim-nao"
+        },
+        {
+          "id": "diretor-imprensa",
+          "etiqueta": "Diretor de Imprensa",
+          "tipo": "presenca",
+          "ambito": "por-equipa"
+        },
+        {
+          "id": "delegado",
+          "etiqueta": "Delegado",
+          "tipo": "presenca",
+          "ambito": "por-equipa",
+          "obrigatorio": true
+        },
+        {
+          "id": "gestor-seguranca",
+          "etiqueta": "Gestor de Segurança",
+          "tipo": "presenca",
+          "ambito": "por-equipa"
+        }
+      ]
+    },
+    {
+      "id": "abertura",
+      "ordem": 2,
+      "tema": "Apresentações e abertura",
+      "bullets": [
+        {
+          "texto": "Apresentar-me e boas-vindas em nome da FPF"
+        },
+        {
+          "texto": "Fazer referência à presença de algum elemento presente na reunião",
+          "descricao": "Coordenador, avaliador, presidente de um ou dos dois clubes",
+          "condicao": {
+            "id": "presenca-relevante",
+            "quando": "sim"
+          }
+        },
+        {
+          "texto": "Apresentar equipa de arbitragem e mencionar associação",
+          "descricao": "E algum facto de relevância"
+        },
+        {
+          "texto": "Relembrar o lema \"Marcamos o Amanhã\"",
+          "descricao": "Objetivo: desenvolver e valorizar o futebol / futsal / futebol de praia e as suas competições (organizadas pela FPF). Todos temos um papel fundamental: todos nós ligados à organização desportiva. Apelo: ao profissionalismo, elevação e fairplay no cumprimento das vossas funções"
+        },
+        {
+          "texto": "Identificar jogo e breve curiosidade"
+        },
+        {
+          "texto": "Agradecer receção, hospitalidade e agilidade",
+          "descricao": "Podendo fazer referência a aspetos positivos"
+        },
+        {
+          "texto": "Relembrar que existem procedimentos de violência, racismo, xenofobia e discriminação",
+          "descricao": "Não sendo expectável que tal aconteça"
+        }
+      ],
+      "campos": [
+        {
+          "id": "competicao",
+          "etiqueta": "Competição",
+          "tipo": "texto",
+          "obrigatorio": true
+        },
+        {
+          "id": "jornada",
+          "etiqueta": "Jornada",
+          "tipo": "texto",
+          "obrigatorio": true
+        },
+        {
+          "id": "visitado",
+          "etiqueta": "Visitado",
+          "tipo": "texto",
+          "obrigatorio": true
+        },
+        {
+          "id": "visitante",
+          "etiqueta": "Visitante",
+          "tipo": "texto",
+          "obrigatorio": true
+        },
+        {
+          "id": "curiosidade",
+          "etiqueta": "Curiosidade",
+          "tipo": "texto"
+        },
+        {
+          "id": "arbitro",
+          "etiqueta": "Árbitro / Associação",
+          "tipo": "texto",
+          "obrigatorio": true
+        },
+        {
+          "id": "segundo-arbitro",
+          "etiqueta": "2.º árbitro",
+          "tipo": "texto"
+        },
+        {
+          "id": "terceiro-arbitro",
+          "etiqueta": "3.º árbitro",
+          "tipo": "texto"
+        },
+        {
+          "id": "cronometrista",
+          "etiqueta": "Cronometrista",
+          "tipo": "texto"
+        },
+        {
+          "id": "quarto-arbitro",
+          "etiqueta": "4.º árbitro",
+          "tipo": "texto"
+        },
+        {
+          "id": "associacoes",
+          "etiqueta": "Associações",
+          "tipo": "texto"
+        },
+        {
+          "id": "observador",
+          "etiqueta": "Observador",
+          "tipo": "texto"
+        }
+      ]
+    },
+    {
+      "id": "forca-policial",
+      "ordem": 3,
+      "tema": "Segurança (Força Policial)",
+      "condicao": {
+        "id": "policiamento",
+        "quando": "sim"
+      },
+      "pessoa": {
+        "etiqueta": "Nome do comandante"
+      },
+      "bullets": [
+        {
+          "texto": "N.º de efetivos",
+          "descricao": "Confirmar"
+        },
+        {
+          "texto": "Garantidas as condições?",
+          "slideAlternativo": {
+            "condicao": {
+              "id": "policiamento",
+              "quando": "nao"
+            },
+            "slide": "gestor-seguranca"
+          }
+        },
+        {
+          "texto": "Alteração de ordem pública, equipa de arbitragem?",
+          "descricao": "Centro do terreno ou entrada para balneários?",
+          "slideAlternativo": {
+            "condicao": {
+              "id": "policiamento",
+              "quando": "nao"
+            },
+            "slide": "gestor-seguranca"
+          }
+        },
+        {
+          "texto": "Mais alguma informação relevante?",
+          "slideAlternativo": {
+            "condicao": {
+              "id": "policiamento",
+              "quando": "nao"
+            },
+            "slide": "gestor-seguranca"
+          }
+        },
+        {
+          "texto": "Solicitar presença no debriefing",
+          "descricao": "Juntamente com o Gestor de Segurança",
+          "slideAlternativo": {
+            "condicao": {
+              "id": "policiamento",
+              "quando": "nao"
+            },
+            "slide": "gestor-seguranca"
+          }
+        }
+      ],
+      "campos": [
+        {
+          "id": "policiamento-obrigatorio",
+          "etiqueta": "Policiamento obrigatório",
+          "tipo": "sim-nao",
+          "obrigatorio": true
+        },
+        {
+          "id": "forca-policial",
+          "etiqueta": "PSP / GNR",
+          "tipo": "selecao",
+          "opcoes": [
+            "PSP",
+            "GNR"
+          ],
+          "condicao": {
+            "id": "policiamento",
+            "quando": "sim"
+          }
+        },
+        {
+          "id": "num-efetivos",
+          "etiqueta": "N.º de efetivos",
+          "tipo": "numero",
+          "condicao": {
+            "id": "policiamento",
+            "quando": "sim"
+          }
+        }
+      ]
+    },
+    {
+      "id": "emergencia-medica",
+      "ordem": 4,
+      "tema": "Emergência Médica",
+      "pessoa": {
+        "etiqueta": "Nome / responsável",
+        "descricao": "Pode ser garantido pelas equipas"
+      },
+      "bullets": [
+        {
+          "texto": "Satisfeitos com as condições?"
+        },
+        {
+          "texto": "Localização do desfibrilhador (DAE) e quem manuseia?",
+          "descricao": "Única a questionar se a garantia médica for assegurada por elementos das equipas"
+        },
+        {
+          "texto": "Entidade? N.º de elementos? Localização? N.º de macas?",
+          "descricao": "Confirmar",
+          "condicao": {
+            "id": "emergencia-externa",
+            "quando": "sim"
+          }
+        },
+        {
+          "texto": "Ambulâncias? Sua localização? Relembrar acessos disponíveis em caso de emergência",
+          "descricao": "Confirmar",
+          "condicao": {
+            "id": "emergencia-externa",
+            "quando": "sim"
+          }
+        },
+        {
+          "texto": "Referir que só ao sinal convencional do Árbitro a equipa alocada à maca poderá entrar no retângulo de jogo"
+        }
+      ],
+      "campos": [
+        {
+          "id": "dae-localizacao",
+          "etiqueta": "Localização do DAE",
+          "tipo": "texto",
+          "obrigatorio": true
+        },
+        {
+          "id": "dae-manuseia",
+          "etiqueta": "Quem manuseia o DAE",
+          "tipo": "texto",
+          "obrigatorio": true
+        },
+        {
+          "id": "em-entidade",
+          "etiqueta": "Entidade",
+          "tipo": "texto",
+          "condicao": {
+            "id": "emergencia-externa",
+            "quando": "sim"
+          }
+        },
+        {
+          "id": "em-num-elementos",
+          "etiqueta": "N.º de elementos",
+          "tipo": "numero",
+          "condicao": {
+            "id": "emergencia-externa",
+            "quando": "sim"
+          }
+        },
+        {
+          "id": "em-localizacao",
+          "etiqueta": "Localização da equipa",
+          "tipo": "texto",
+          "condicao": {
+            "id": "emergencia-externa",
+            "quando": "sim"
+          }
+        },
+        {
+          "id": "em-num-macas",
+          "etiqueta": "N.º de macas",
+          "tipo": "numero",
+          "condicao": {
+            "id": "emergencia-externa",
+            "quando": "sim"
+          }
+        },
+        {
+          "id": "num-ambulancias",
+          "etiqueta": "N.º de ambulâncias",
+          "tipo": "numero",
+          "condicao": {
+            "id": "emergencia-externa",
+            "quando": "sim"
+          }
+        },
+        {
+          "id": "localizacao-ambulancia",
+          "etiqueta": "Localização da ambulância",
+          "tipo": "texto",
+          "condicao": {
+            "id": "emergencia-externa",
+            "quando": "sim"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gestor-seguranca",
+      "ordem": 5,
+      "tema": "Gestor de Segurança",
+      "condicao": {
+        "id": "policiamento",
+        "quando": "sim"
+      },
+      "ordemAlternativa": {
+        "condicao": {
+          "id": "policiamento",
+          "quando": "nao"
+        },
+        "ordem": 3
+      },
+      "pessoa": {
+        "etiqueta": "Nome"
+      },
+      "bullets": [
+        {
+          "texto": "N.º de ARDs/PCSs",
+          "descricao": "Confirmar"
+        },
+        {
+          "texto": "Aceder à zona técnica, só autorizados e credenciados"
+        },
+        {
+          "texto": "Jogadores sob castigo disciplinar NÃO podem aceder à zona técnica e elementos técnicos NÃO podem estar no recinto desportivo"
+        },
+        {
+          "texto": "Elementos técnicos ao balneário ao intervalo",
+          "descricao": "Confirmar"
+        },
+        {
+          "texto": "Quem será o técnico de limpeza",
+          "descricao": "Escovinha"
+        }
+      ],
+      "campos": [
+        {
+          "id": "num-ards",
+          "etiqueta": "N.º de ARDs",
+          "tipo": "numero"
+        },
+        {
+          "id": "num-pcss",
+          "etiqueta": "N.º de PCSs",
+          "tipo": "numero"
+        },
+        {
+          "id": "elementos-tecnicos-balneario",
+          "etiqueta": "Elementos técnicos ao balneário",
+          "tipo": "texto",
+          "ambito": "por-equipa"
+        },
+        {
+          "id": "tecnico-limpeza",
+          "etiqueta": "Técnico de limpeza",
+          "tipo": "texto"
+        }
+      ]
+    },
+    {
+      "id": "diretor-imprensa",
+      "ordem": 6,
+      "tema": "Diretor de Imprensa",
+      "condicao": {
+        "id": "diretor-imprensa",
+        "quando": "sim"
+      },
+      "pessoa": {
+        "etiqueta": "Nome",
+        "multiplo": true
+      },
+      "bullets": [
+        {
+          "texto": "Garante credenciação de todos os elementos da comunicação social?",
+          "descricao": "Relembrar necessidade de utilização dos devidos coletes"
+        },
+        {
+          "texto": "Existência de ações promocionais",
+          "descricao": "Não atrasar o início do jogo"
+        },
+        {
+          "texto": "Relembrar procedimento para flash interview e questionar local onde se vai realizar",
+          "descricao": "Apelar rapidez. Se transmissão, flash interview e talvez pré-jogo",
+          "condicao": {
+            "id": "flash",
+            "quando": "sim"
+          }
+        }
+      ],
+      "campos": [
+        {
+          "id": "acoes-clube-antes",
+          "etiqueta": "Ações promocionais do clube — antes do jogo",
+          "tipo": "lista-repetivel",
+          "confirmacaoPos": true
+        },
+        {
+          "id": "acoes-clube-final",
+          "etiqueta": "Ações promocionais do clube — final",
+          "tipo": "lista-repetivel",
+          "confirmacaoPos": true
+        },
+        {
+          "id": "acoes-fpf",
+          "etiqueta": "Ações promocionais da FPF",
+          "tipo": "lista-repetivel",
+          "confirmacaoPos": true
+        },
+        {
+          "id": "flash-local",
+          "etiqueta": "Flash interview (e local)",
+          "tipo": "texto",
+          "condicao": {
+            "id": "flash",
+            "quando": "sim"
+          }
+        },
+        {
+          "id": "flash-elementos",
+          "etiqueta": "Elementos da comunicação social",
+          "tipo": "lista-repetivel",
+          "descricao": "Nome e função",
+          "condicao": {
+            "id": "flash",
+            "quando": "sim"
+          }
+        }
+      ]
+    },
+    {
+      "id": "delegados",
+      "ordem": 7,
+      "tema": "Delegados ao jogo",
+      "pessoa": {
+        "etiqueta": "Nome",
+        "multiplo": true
+      },
+      "bullets": [
+        {
+          "texto": "Solicitar colaboração",
+          "descricao": "Apenas o treinador de pé em permanência a dar instruções"
+        },
+        {
+          "texto": "Braçadeiras e coletes na área técnica e no local de aquecimento"
+        },
+        {
+          "texto": "Validar equipamentos e coletes dos suplentes",
+          "descricao": "Mockup"
+        },
+        {
+          "texto": "Mencionar local de aquecimento dos jogadores"
+        }
+      ],
+      "campos": [
+        {
+          "id": "cor-coletes",
+          "etiqueta": "Cor dos coletes",
+          "tipo": "texto",
+          "ambito": "por-equipa",
+          "permiteDefinirNaReuniao": true
+        },
+        {
+          "id": "alteracao-maquete",
+          "etiqueta": "Alteração em relação à maquete",
+          "tipo": "texto",
+          "ambito": "por-equipa",
+          "permiteDefinirNaReuniao": true
+        },
+        {
+          "id": "local-aquecimento",
+          "etiqueta": "Local de aquecimento",
+          "tipo": "texto"
+        }
+      ]
+    },
+    {
+      "id": "countdown-arbitragem",
+      "ordem": 8,
+      "tema": "Countdown e arbitragem",
+      "pessoa": {
+        "etiqueta": "Nome do árbitro"
+      },
+      "bullets": [
+        {
+          "texto": "Relembrar a hora do início do jogo e acertar com relógio do árbitro",
+          "descricao": "Que passa a ser oficial"
+        },
+        {
+          "texto": "Countdown: relembrar minutos da identificação, formação no túnel e minutos de silêncio ou outras ativações"
+        },
+        {
+          "texto": "Apelar ao cumprimento dos horários estabelecidos"
+        },
+        {
+          "texto": "Convidar a equipa de arbitragem a falar"
+        },
+        {
+          "texto": "Alguém quer usar da palavra?",
+          "seccao": "fecho"
+        },
+        {
+          "texto": "Agradecer a colaboração de todos e fechar",
+          "seccao": "fecho"
+        }
+      ],
+      "campos": [
+        {
+          "id": "countdown-identificacao",
+          "etiqueta": "Countdown — identificação",
+          "tipo": "texto",
+          "condicao": {
+            "id": "identificacao",
+            "quando": "sim"
+          }
+        },
+        {
+          "id": "countdown-formacao",
+          "etiqueta": "Countdown — formação para entrada",
+          "tipo": "texto",
+          "condicao": {
+            "id": "formacao-tunel",
+            "quando": "sim"
+          }
+        },
+        {
+          "id": "notas-adicionais",
+          "etiqueta": "Notas adicionais",
+          "tipo": "lista-repetivel"
+        }
+      ]
+    }
+  ]
+}
